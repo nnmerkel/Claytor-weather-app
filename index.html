@@ -12,18 +12,75 @@
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
  	    <meta name="viewport" content="width=device-width, user-scalable=no">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
+        <meta name="description" content="shouldirow.com">
 	    <meta name="author" content="Evan Merkel">
 	    <meta name="copyright" content="Evan Merkel">
 	    <meta name="keywords" content="">
         
+        <link type="text/css" rel="stylesheet" href="css/reset.css">
+        <link type="text/css" rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link rel="icon" type="image/png" href="images/favicon.png">
+        
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script type="text/javascript" src="js/modernizr-2.8.3.dev.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
         
-        <title>Home</title>
+        <title>Should I Row?</title>
     </head>
     
     <body>
-        
+        <div id="background"></div>
+        <div id="content">
+            <div class="container">
+                <p id="current-zip">Current location: <input type="text" name="location" id="zip"></p>
+                <p id="time"></p>
+                <div class="container">
+                    <!-- fa-meh-o, fa-smile-o fa-frown-o -->
+                    <p class="message">Row <i class="fa fa-smile-o"></i></p>
+                    <div id="weather">Loading current data…</div>
+                    <img id="logo" src="images/vt-crew-logo-new-white.png">
+                </div>
+                <p class="author">Created by Evan Merkel // Copyright &copy; 2016</p>
+            </div>
+        </div>
+        <script>
+            //timestamp
+            stamp = new Date();
+            year = 1900 + stamp.getYear();
+            var hours, mins, time;
+            hours = stamp.getHours();
+            if (hours >= 12) time = " PM";
+            else time = " AM";
+            if (hours > 12) hours -= 12;
+            if (hours == 0) hours = 12;
+            mins = stamp.getMinutes();
+            if (mins < 10) mins = "0" + mins;
+            document.getElementById('time').innerHTML = '<span>Page loaded at: ' + hours + ':' + mins + time + ' on ' + (stamp.getMonth() + 1) + '/' + stamp.getDate()+ '/' + year + '</span>';
+        </script>
+        <script>
+            //get weather data
+            $(document).ready(function() {
+                $.simpleWeather({
+                    location: 'Pulaski, VA',
+                    woeid: '',
+                    unit: 'f',
+                    success: function(weather) {
+                        html = '<ul class="conditions"><li class="temp"> '+weather.temp+'&deg;'+weather.units.temp+'<span class="wc"> (Wind chill '+weather.wind.chill+'&deg;)</span></li>';
+                        html += '<li class="currently">'+weather.currently+'</li>';
+                        html += '<li class="winds">Winds '+weather.wind.direction+' '+weather.wind.speed+' '+weather.units.speed+'</li></ul>';
+                        
+                        html2 = weather.city+', '+weather.region;
+                        
+                        $("#weather").html(html);
+                        
+                        $("#zip").attr('placeholder', html2)
+                    },
+                    error: function(error) {
+                        $("#weather").html('<p>'+error+'</p>');
+                    }
+                });
+            });
+        </script>
     </body>
 </html>

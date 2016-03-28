@@ -1,0 +1,132 @@
+/* global styles for claytor lake web app */
+
+html {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans", Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    width: 100%;
+    min-height: 100vh;
+    font-size: 1rem;
+    color: #fff;
+}
+
+#background {
+    min-height: 100vh;
+    height: 100vh;
+    min-width: 100%;
+    width: 100%;
+    background: url(../images/gm.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    z-index: -1;
+}
+
+#content {
+    width: 100%;
+    min-width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    height: 100vh;
+    text-align: center;
+    padding-top: 1rem;
+    box-sizing: border-box;
+}
+
+.container #current-zip {
+    text-align: left;
+}
+
+.container #current-zip #zip {
+    -webkit-appearance: none;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    background-color: transparent;
+}
+
+#content .container .container {
+    min-height: auto;
+    height: auto;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#content p {
+    color: #fff;
+    margin: 0;
+}
+
+.container #current-zip #zip:focus,
+.container #current-zip #zip:active {
+    font-size: 0.75rem;
+}
+
+#content #time,
+#content .author,
+.container #current-zip {
+    font-size: 0.75rem;
+    opacity: 0.6;
+}
+
+#content .message {
+    font-size: 6rem;
+    line-height: 0.95rem;
+    letter-spacing: -4px;
+}
+
+#content .conditions {
+    list-style-type: none;
+    padding: 0;
+}
+
+#content .conditions li {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 2rem;
+    margin-left: 1.5rem;
+}
+
+#content .temp,
+#content .location,
+#content .winds,
+#content .currently {
+    font-weight: 700;
+}
+
+#content .wc {
+    font-size: 1.25rem;
+    font-weight: 100;
+}
+
+#content #logo {
+    width: 100%;
+    max-width: 150px;
+    margin-top: 100px;
+}
+
+#content .author {
+    position: absolute;
+    bottom: 1rem;
+    width: 100%;
+}
