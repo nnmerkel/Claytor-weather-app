@@ -12,10 +12,11 @@
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
  	    <meta name="viewport" content="width=device-width, user-scalable=no">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="shouldirow.com">
+        <meta name="description" content="Check local weather listings and see if the conditions in your area are suitable for rowing.">
 	    <meta name="author" content="Evan Merkel">
 	    <meta name="copyright" content="Evan Merkel">
-	    <meta name="keywords" content="">
+	    <meta name="keywords" content="weather, rowing, conditions, location">
+        <meta name="robots" content="index, follow">
         
         <link type="text/css" rel="stylesheet" href="css/reset.css">
         <link type="text/css" rel="stylesheet" href="css/styles.css">
@@ -68,13 +69,13 @@
                     success: function(weather) {
                         html = '<ul class="conditions"><li class="temp"> '+weather.temp+'&deg;'+weather.units.temp+'<span class="wc"> (Wind chill '+weather.wind.chill+'&deg;)</span></li>';
                         html += '<li class="currently">'+weather.currently+'</li>';
-                        html += '<li class="winds">Winds '+weather.wind.direction+' '+weather.wind.speed+' '+weather.units.speed+'</li></ul>';
+                        html += '<li class="winds">Winds '+weather.wind.direction+' '+weather.wind.speed+' '+weather.units.speed+'<span class="wc"> ('+weather.wind.speed * 0.87+' knots)</span></li></ul>';
                         
                         html2 = weather.city+', '+weather.region;
                         
                         $("#weather").html(html);
                         
-                        $("#zip").attr('placeholder', html2)
+                        $("input#zip").val(html2)
                     },
                     error: function(error) {
                         $("#weather").html('<p>'+error+'</p>');
