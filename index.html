@@ -42,6 +42,7 @@
                     <div id="weather">Loading current data…</div>
                     <img id="logo" src="images/vt-crew-logo-new-white.png">
                 </div>
+                <p class="links"><a href="http://www.spc.noaa.gov/faq/tornado/beaufort.html">Beaufort Scale</a></p>
                 <p class="author">Created by Evan Merkel // Copyright &copy; 2016</p>
             </div>
         </div>
@@ -75,7 +76,14 @@
                         
                         $("#weather").html(html);
                         
-                        $("input#zip").val(html2)
+                        // message conditions
+                        if (weather.wind.speed >= 8 && weather.wind.speed < 12.5 || weather.temp <= 20) {
+                            $("p.message").html('Probably Don\'t Row <i class="fa fa-meh-o"></i>');
+                        } else if (weather.wind.speed >= 12.5) {
+                            $("p.message").html('Don\'t Row <i class="fa fa-frown-o"></i>');
+                        }
+                        
+                        $("input#zip").val(html2);
                     },
                     error: function(error) {
                         $("#weather").html('<p>'+error+'</p>');
