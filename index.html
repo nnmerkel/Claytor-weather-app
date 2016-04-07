@@ -63,6 +63,9 @@
         <script>
             //get weather data
             $(document).ready(function() {
+                var tempTolerance = 20,
+                    windToleranceMid = 8,
+                    windToleranceHigh = 13;
                 $.simpleWeather({
                     location: 'Pulaski, VA',
                     woeid: '',
@@ -77,9 +80,9 @@
                         $("#weather").html(html);
                         
                         // message conditions
-                        if (weather.wind.speed >= 8 && weather.wind.speed < 12.5 || weather.temp <= 20) {
+                        if (weather.wind.speed >= windToleranceMid && weather.wind.speed < windToleranceHigh || weather.temp <= tempTolerance) {
                             $("p.message").html('Probably Don\'t Row <i class="fa fa-meh-o"></i>');
-                        } else if (weather.wind.speed >= 12.5) {
+                        } else if (weather.wind.speed >= windToleranceHigh) {
                             $("p.message").html('Don\'t Row <i class="fa fa-frown-o"></i>');
                         }
                         
