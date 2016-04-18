@@ -24,6 +24,12 @@ a {
     color: #fff;
 }
 
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
 input {
     font-family: "Open Sans", Helvetica Neue, Helvetica, Arial, sans-serif;
 }
@@ -57,6 +63,7 @@ input {
     text-align: center;
     padding-top: 1rem;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 .container #current-zip {
@@ -139,6 +146,34 @@ input {
     position: absolute;
     bottom: 1rem;
     width: 100%;
+}
+
+/*=========================== menu ===========================*/
+
+#show-menu {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#show-menu i {
+    cursor: pointer;
+}
+
+.menu {
+    width: 200px;
+    position: absolute;
+    right: 0;
+}
+
+.menu ul {
+    margin: 0;
+    margin-right: -400px;
+}
+
+.menu ul.visible {
+    margin-right: 400px;
 }
 
 @media (max-width : 600px) {

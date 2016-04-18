@@ -36,13 +36,25 @@
             <div class="container">
                 <p id="current-zip">Current location: <input type="text" name="location" id="zip"></p>
                 <p id="time"></p>
+                
+                <a id="show-menu"><i class="fa fa-fw fa-3x fa-bars"></i></a>
+                
+                <div class="menu">
+                    <ul>
+                        <li><a href="http://www.spc.noaa.gov/faq/tornado/beaufort.html">Beaufort Scale</a></li>
+                        <li><a href="">link</a></li>
+                        <li><a href="">link</a></li>
+                        <li><a href="">link</a></li>
+                    </ul>
+                </div>
+                
                 <div class="container">
                     <!-- fa-meh-o, fa-smile-o fa-frown-o -->
                     <p class="message">Row <i class="fa fa-smile-o"></i></p>
                     <div id="weather">Loading current data…</div>
                     <img id="logo" src="images/vt-crew-logo-new-white.png">
                 </div>
-                <p class="links"><a href="http://www.spc.noaa.gov/faq/tornado/beaufort.html">Beaufort Scale</a></p>
+                
                 <p class="author">Created by Evan Merkel // Copyright &copy; 2016</p>
             </div>
         </div>
@@ -91,6 +103,12 @@
                     error: function(error) {
                         $("#weather").html('<p>'+error+'</p>');
                     }
+                });
+                
+                //end weather, begin other jQuery
+                $("#show-menu").click(function() {
+                    $(".menu ul").toggleClass("visible");
+                    return false;
                 });
             });
         </script>
