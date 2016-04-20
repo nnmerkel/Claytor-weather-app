@@ -45,6 +45,15 @@
                         <li><a href="">link</a></li>
                         <li><a href="">link</a></li>
                         <li><a href="">link</a></li>
+                        <li>
+                            <p>This web app was developed in response to the confusion that prefaced practice some mornings. For Virginia Tech
+                            Crew, our beloved Claytor lake is about a 30 minute drive from campus, making transit time each morning about an
+                             hour long. Sometimes, everyone would show up at Claytor only to find that inclement weather had frozen the dock,
+                            or that winds were too high to row, or that the temperature had fallen as much as 10 degrees. Then we would hae to
+                            turn around and head back, wasting gas, time, and sleep. This app is intended to be used as a resource for coaches 
+                            and crews who want to look up rowing conditions before practice. Simply enter your city or zip code and you can see 
+                            what conditions are like! Go Hokies!</p>
+                        </li>
                     </ul>
                 </div>
                 
@@ -58,19 +67,23 @@
                 <p class="author">Created by Evan Merkel // Copyright &copy; 2016</p>
             </div>
         </div>
+        
         <script>
             var map;
             function initMap() {
                 map = new google.maps.Map(document.getElementById('background'), {
-                    center: {lat: -34.397, lng: 150.644},
-                    zoom: 8,
+                    center: {lat: 37.056, lng: -80.6133},
+                    zoom: 15,
                     disableDefaultUI: true,
                     mapTypeId: google.maps.MapTypeId.HYBRID
                 });
             }
         </script>
+        
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrop61uOpWr2HVsotLNfOQ5-lNBgIgKNs&callback=initMap"
-                async defer></script>
+                async defer>
+        </script>
+        
         <script>
             //timestamp
             stamp = new Date();
