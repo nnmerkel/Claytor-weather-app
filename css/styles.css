@@ -39,10 +39,10 @@ input {
     height: 100vh;
     min-width: 100%;
     width: 100%;
-    background: url(../images/gm.jpg);
+    /*background: url(../images/gm.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: 50% 50%;
+    background-position: 50% 50%;*/
     z-index: -1;
 }
 
@@ -69,6 +69,7 @@ input {
 .container #current-zip {
     text-align: left;
     margin-left: 1rem;
+    position: absolute;
 }
 
 .container #current-zip #zip {
@@ -153,8 +154,8 @@ input {
 #show-menu {
     display: inline-block;
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 1rem;
+    right: 1rem;
     cursor: pointer;
 }
 
@@ -165,11 +166,13 @@ input {
 .menu {
     width: 200px;
     position: absolute;
+    top: 4rem;
     right: -200px;
     -webkit-transition: all .5s ease;
     -moz-transition: all .5s ease;
     -o-transition: all .5s ease;
     transition: all .5s ease;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .menu ul {
@@ -178,6 +181,19 @@ input {
 
 .menu.visible {
     right: 0;
+}
+
+.menu ul li a {
+    padding: 1rem;
+    display: block;
+}
+
+.menu ul li {
+    border-bottom: 1px solid #fff;
+}
+
+.menu ul li:last-child {
+    border-bottom: 0;
 }
 
 @media (max-width : 600px) {
