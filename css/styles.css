@@ -1,11 +1,16 @@
 /* global styles for claytor lake web app */
 
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
 html {
     background-color: transparent;
     margin: 0;
     padding: 0;
     font-family: "Open Sans", Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: 75%;
+    box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -32,6 +37,10 @@ ul {
 
 input {
     font-family: "Open Sans", Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+:focus {
+    outline: 2px solid #4885ed !important;
 }
 
 #background {
@@ -97,7 +106,8 @@ input {
 }
 
 .container #current-zip #zip:focus,
-.container #current-zip #zip:active {
+.container #current-zip #zip:active,
+button:focus {
     font-size: 1rem;
 }
 
