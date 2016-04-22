@@ -37,7 +37,7 @@
                 <p id="current-zip">Current location: <input type="text" name="location" id="zip"><button id="update">Set Location</button></p>
                 <p id="time"></p>
                 
-                <a id="show-menu"><i class="fa fa-fw fa-3x fa-bars"></i></a>
+                <a href="#0" id="show-menu"><i class="fa fa-fw fa-3x fa-bars"></i></a>
                 
                 <div class="menu">
                     <ul>
@@ -131,7 +131,16 @@
                     }
                 });
                 
+                /* TODO
+                1. call simpleWeather function after button is pressed
+                2. make sure the button works on enter keyup
+                3. fix the freaking google maps links
+                4. add additional onditions statements in the weather function
+                */
+                
                 //end weather, begin other jQuery
+                
+                //toggle side menu
                 $('#show-menu').click(function() {
                     $('.menu').toggleClass('visible');
                     return false;
