@@ -4,6 +4,7 @@
 <!-- the "no-js" class is for Modernizr. -->
 
     <head>
+        <title>Should I Row?</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, user-scalable=no">
@@ -17,13 +18,11 @@
         <link type="text/css" rel="stylesheet" href="css/reset.css">
         <link type="text/css" rel="stylesheet" href="css/styles.css">
         <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-        <link rel="icon" type="image/png" href="images/favicon.png">
+        <link rel="icon" type="image/png" href="images/favicon2.png">
         
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
         <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
-        
-        <title>Should I Row?</title>
     </head>
     
     <body>
@@ -38,7 +37,7 @@
                     <ul>
                         <li>
                             <div id="input-wrapper">
-                                <input type="text" name="location" id="zip" autocomplete="off"><button id="update">Go <i class="fa fa-2x fa-map-marker" aria-hidden="true"></i></button>
+                                <input type="text" name="location" id="zip" autocomplete="off"><button id="update"><i class="fa fa-2x fa-map-marker" aria-hidden="true"></i></button>
                             </div>
                         </li>
                         <li><a href="http://www.spc.noaa.gov/faq/tornado/beaufort.html">Beaufort Scale</a></li>
@@ -141,7 +140,6 @@
                 //set location to user input
                 $('#update').click(function() {
                     newLocation = $('#zip').val();
-                    console.log(newLocation);
                     runSimpleWeather();
                 });
                 
