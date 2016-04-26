@@ -34,32 +34,25 @@
         <div id="background"></div>
         <div id="content">
             <div class="container">
-                <p id="current-zip">Current location: <input type="text" name="location" id="zip"><button id="update">Set Location</button></p>
                 <p id="time"></p>
                 
-                <a href="#0" id="show-menu"><i class="fa fa-fw fa-3x fa-bars"></i></a>
+                <a href="#0" id="show-menu"><i class="fa fa-fw fa-3x fa-bars" aria-hidden="true"></i></a>
                 
                 <div class="menu">
                     <ul>
+                        <li>
+                            <div id="input-wrapper">
+                                <input type="text" name="location" id="zip" autocomplete="off"><button id="update">Go <i class="fa fa-2x fa-map-marker" aria-hidden="true"></i></button>
+                            </div>
+                        </li>
                         <li><a href="http://www.spc.noaa.gov/faq/tornado/beaufort.html">Beaufort Scale</a></li>
                         <li><a href="">link</a></li>
-                        <li><a href="">link</a></li>
-                        <li><a href="">link</a></li>
-                        <li>
-                            <p>This web app was developed in response to the confusion that prefaced practice some mornings. For Virginia Tech
-                            Crew, our beloved Claytor lake is about a 30 minute drive from campus, making transit time each morning about an
-                             hour long. Sometimes, everyone would show up at Claytor only to find that inclement weather had frozen the dock,
-                            or that winds were too high to row, or that the temperature had fallen as much as 10 degrees. Then we would hae to
-                            turn around and head back, wasting gas, time, and sleep. This app is intended to be used as a resource for coaches 
-                            and crews who want to look up rowing conditions before practice. Simply enter your city or zip code and you can see 
-                            what conditions are like! Go Hokies!</p>
-                        </li>
                     </ul>
                 </div>
                 
                 <div class="container">
                     <!-- fa-meh-o, fa-smile-o fa-frown-o -->
-                    <p class="message">Row <i class="fa fa-smile-o"></i></p>
+                    <p id="message">Row <i class="fa fa-smile-o" aria-hidden="true"></i></p>
                     <div id="weather">Loading current data…</div>
                     <img id="logo" src="images/vt-crew-logo-new-white.png">
                 </div>
@@ -104,7 +97,8 @@
                     windToleranceMid = 10,
                     windToleranceHigh = 16,
                     newLocation = 'Pulaski, VA';
-                $.simpleWeather({
+                var runSimpleWeather = function() {
+                    $.simpleWeather({
                     location: newLocation,
                     woeid: '',
                     unit: 'f',
@@ -119,23 +113,25 @@
                         
                         // message conditions
                         if (weather.wind.speed >= windToleranceMid && weather.wind.speed < windToleranceHigh || weather.temp <= tempTolerance) {
-                            $('.message').html('Probably Don\'t Row <i class="fa fa-meh-o"></i>');
+                            $('#message').html('Probably Don\'t Row <i class="fa fa-meh-o" aria-hidden="true"></i>');
                         } else if (weather.wind.speed >= windToleranceHigh) {
-                            $('.message').html('Don\'t Row <i class="fa fa-frown-o"></i>');
+                            $('#message').html('Don\'t Row <i class="fa fa-frown-o" aria-hidden="true"></i>');
                         }
                         
                         $('#zip').val(html2);
                     },
                     error: function(error) {
-                        $('#weather').html('<p>'+error+'</p>');
+                        $('#weather').html('<p id="error">'+error+'</p>');
+                        $('#message').html('Try Again, Dipshit');
                     }
                 });
+                } //end runSimpleWeather
+                
+                runSimpleWeather();
                 
                 /* TODO
-                1. call simpleWeather function after button is pressed
-                2. make sure the button works on enter keyup
-                3. fix the freaking google maps links
-                4. add additional onditions statements in the weather function
+                1. fix the freaking google maps links
+                2. add additional onditions statements in the weather function
                 */
                 
                 //end weather, begin other jQuery
@@ -150,6 +146,17 @@
                 $('#update').click(function() {
                     newLocation = $('#zip').val();
                     console.log(newLocation);
+                    runSimpleWeather();
+                });
+                
+                //trigger the update when you press enter
+                $('#zip').keypress(function (e) {
+                    if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+                        $('#update').click();
+                        return false;
+                    } else {
+                        return true;
+                    }
                 });
                 
                 //my attempt to make links generated by google maps inaccessible to users
