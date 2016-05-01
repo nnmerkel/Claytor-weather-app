@@ -22,11 +22,11 @@ body {
     width: 100%;
     min-height: 100vh;
     font-size: 1rem;
-    color: #fff;
+    color: #eee;
 }
 
 a {
-    color: #fff;
+    color: #eee;
 }
 
 ul {
@@ -86,7 +86,7 @@ input {
 }
 
 #content p {
-    color: #fff;
+    color: #eee;
     margin: 0;
 }
 
@@ -187,7 +187,7 @@ input {
 }
 
 .menu ul li {
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #eee;
 }
 
 .menu ul li:last-child {
@@ -203,7 +203,7 @@ input {
     border: 0;
     border-bottom: 1px solid #fff;
     background-color: transparent;
-    color: #fff;
+    color: #eee;
     width: 120px;
 }
 
